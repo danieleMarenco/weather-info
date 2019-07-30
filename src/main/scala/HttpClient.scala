@@ -1,4 +1,5 @@
 import java.io.PrintWriter
+
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
@@ -47,7 +48,7 @@ object HttpClient {
   def start(): Unit = {
     val uriLocation = "http://api.ipstack.com/check?access_key=4d0bca2749c2c839bb1cf5956f1e9bdd"
     val uriGPS =
-      "https://api.openweathermap.org/data/2.5/weather?lat={latitudine}&lon={longitudine}&appid=713f66bf9e4f033b6b6f15ec68373e13"
+      "https://api.openweathermap.org/data/2.5/weather?lat={latitudine}&lon={longitudine}&appid=713f66bf9e4f033b6b6f15ec68373e13&units=metric"
 
     val ipStack: String = Await.result(get(uriLocation), 10.seconds)
     new PrintWriter("ipStackResponse") { write(ipStack); close }
